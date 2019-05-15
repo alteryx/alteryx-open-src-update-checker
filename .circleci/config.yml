@@ -28,7 +28,7 @@ jobs:
       - checkout
       - run: virtualenv venv_py36
       - run: source venv_py36/bin/activate && make installdeps
-      - run: source venv_py27/bin/activate && make lint
+      - run: source venv_py36/bin/activate && make lint
       - run: source venv_py36/bin/activate && pytest
 
   "python-37":
