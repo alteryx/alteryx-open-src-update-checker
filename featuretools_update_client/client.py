@@ -1,11 +1,11 @@
 import json
 import warnings
 
-import featuretools as ft
 import requests
 
 
 def initialize():
+    import featuretools as ft
     host = 'https://api.featurelabs.com'
     url = host + '/update_check/?version=' + ft.__version__
     r = requests.get(url)
