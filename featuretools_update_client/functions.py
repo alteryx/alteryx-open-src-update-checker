@@ -4,9 +4,8 @@ import featuretools as ft
 import requests
 
 
-def check_version():
+def check_version(version=ft.__version__):
     base_url = 'https://api.featurelabs.com/update_check/?version='
-    version = ft.__version__
 
     # Catch requests errors
     try:
