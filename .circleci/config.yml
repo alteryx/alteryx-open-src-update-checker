@@ -1,27 +1,7 @@
 version: 2.1
-
-commands:
-  install-packaged-featuretools:
-    description: "install featuretools from source distribution"
-    steps:
-      - run : |
-          source test_env/bin/activate
-          python setup.py sdist
-          FEATURETOOLS_VERSION=$(python setup.py --version)
-          tar -zxvf "dist/featuretools-${FEATURETOOLS_VERSION}.tar.gz"
-          pip install -e "featuretools-${FEATURETOOLS_VERSION}/"
-          pip install -r "featuretools-${FEATURETOOLS_VERSION}/test-requirements.txt"
-  run-packaged-tests:
-    description: "run unit tests on packaged testing files"
-    steps:
-      - run: |
-          source test_env/bin/activate
-          cd "featuretools-$(python setup.py --version)/"
-          pytest
-
 jobs:
   "python-27":
-    working_directory: ~/featuretools
+    working_directory: ~/featuretools_update_client
     docker:
       - image: circleci/python:2.7
     steps:
@@ -33,7 +13,7 @@ jobs:
       - run: source dev_env/bin/activate && pytest
 
   "python-35":
-    working_directory: ~/featuretools
+    working_directory: ~/featuretools_update_client
     docker:
       - image: circleci/python:3.5
     steps:
@@ -45,7 +25,7 @@ jobs:
       - run: source dev_env/bin/activate && pytest
 
   "python-36":
-    working_directory: ~/featuretools
+    working_directory: ~/featuretools_update_client
     docker:
       - image: circleci/python:3.6
     steps:
@@ -57,7 +37,7 @@ jobs:
       - run: source dev_env/bin/activate && pytest
 
   "python-37":
-    working_directory: ~/featuretools
+    working_directory: ~/featuretools_update_client
     docker:
       - image: circleci/python:3.7
     steps:
