@@ -1,0 +1,11 @@
+## URLs
+- https://api.featurelabs.com/datasets/online-retail-logs-2018-08-28.csv.gz
+- https://api.featurelabs.com/datasets/online-retail-logs-2018-08-28.csv
+- https://api.featurelabs.com/datasets/online-retail-logs-2018-08-28.csv.gz?version=0.7.0
+- https://api.featurelabs.com/datasets/data_all_2017.csv.zip
+- https://api.featurelabs.com/datasets/data_2017_jan_feb.csv.zip
+- https://api.featurelabs.com/update_check/
+- https://api.featurelabs.com/update_check/?version=0.7.d
+- https://api.featurelabs.com/update_check/?version=+
+- https://api.featurelabs.com/update_check/?version=bad
+- https://api.featurelabs.com/update_check/?version=0.7.0&version_featuretools_enterprise=1.4.0
