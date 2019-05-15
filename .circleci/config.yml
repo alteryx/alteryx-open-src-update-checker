@@ -1,0 +1,51 @@
+version: 2.1
+jobs:
+  "python-27":
+    working_directory: ~/featuretools_update_client
+    docker:
+      - image: circleci/python:2.7
+    steps:
+      - checkout
+      - run: virtualenv venv_py27
+      - run: source venv_py27/bin/activate && make installdeps
+      - run: source venv_py27/bin/activate && pytest
+
+  "python-35":
+    working_directory: ~/featuretools_update_client
+    docker:
+      - image: circleci/python:3.5
+    steps:
+      - checkout
+      - run: virtualenv venv_py35
+      - run: source venv_py35/bin/activate && make installdeps
+      - run: source venv_py35/bin/activate && pytest
+
+  "python-36":
+    working_directory: ~/featuretools_update_client
+    docker:
+      - image: circleci/python:3.6
+    steps:
+      - checkout
+      - run: virtualenv venv_py36
+      - run: source venv_py36/bin/activate && make installdeps
+      - run: source venv_py36/bin/activate && make lint
+      - run: source venv_py36/bin/activate && pytest
+
+  "python-37":
+    working_directory: ~/featuretools_update_client
+    docker:
+      - image: circleci/python:3.7
+    steps:
+      - checkout
+      - run: virtualenv venv_py37
+      - run: source venv_py37/bin/activate && make installdeps
+      - run: source venv_py37/bin/activate && pytest
+
+workflows:
+  version: 2
+  test_all_python_versions:
+    jobs:
+      - "python-27"
+      - "python-35"
+      - "python-36"
+      - "python-37"
