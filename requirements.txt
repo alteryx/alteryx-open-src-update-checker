@@ -1,1 +1,1 @@
-featuretools>=0.7.1
+featuretools>=0.7.0
