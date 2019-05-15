@@ -21,5 +21,10 @@ setup(
     test_suite='featuretools_update_client/tests',
     tests_require=open('test-requirements.txt').readlines(),
     include_package_data=True,
-    long_description_content_type='text/markdown'
+    long_description_content_type='text/markdown',
+    entry_points={
+        "featuretools_initialize": [
+            "initialize = featuretools_update_client:client"
+        ],
+    }
 )
