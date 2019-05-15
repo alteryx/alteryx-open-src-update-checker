@@ -9,7 +9,6 @@ jobs:
       - run: virtualenv venv_py27
       - run: source dev_env/bin/activate && make installdeps
       - run: source dev_env/bin/activate && make lint
-      - run: source dev_env/bin/activate && pip install -e .
       - run: source dev_env/bin/activate && pytest
 
   "python-35":
@@ -20,8 +19,6 @@ jobs:
       - checkout
       - run: virtualenv venv_py35
       - run: source dev_env/bin/activate && make installdeps
-      - run: source dev_env/bin/activate && make lint
-      - run: source dev_env/bin/activate && pip install -e .
       - run: source dev_env/bin/activate && pytest
 
   "python-36":
@@ -32,8 +29,6 @@ jobs:
       - checkout
       - run: virtualenv venv_py36
       - run: source dev_env/bin/activate && make installdeps
-      - run: source dev_env/bin/activate && make lint
-      - run: source dev_env/bin/activate && pip install -e .
       - run: source dev_env/bin/activate && pytest
 
   "python-37":
@@ -44,8 +39,6 @@ jobs:
       - checkout
       - run: virtualenv venv_py37
       - run: source dev_env/bin/activate && make installdeps
-      - run: source dev_env/bin/activate && make lint
-      - run: source dev_env/bin/activate && pip install -e .
       - run: source dev_env/bin/activate && pytest
 
 workflows:
