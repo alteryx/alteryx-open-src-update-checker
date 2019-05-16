@@ -1,23 +1,17 @@
 import warnings
 
 import featuretools as ft
-import requests
+
+from .utils import get_response_json
 
 
 def check_version(version=ft.__version__):
-    base_url = 'https://api.featurelabs.com/update_check/?version='
+    data = get_response_json(version=version)
 
-    # Catch requests errors
     try:
-        response = requests.get(base_url + version)
-    except requests.exceptions.RequestException:
-        return
-
-    # Catch invalid/missing data returned
-    try:
-        data = response.json()
         is_latest = data['is_latest']
         version = data['version']
+
     except Exception:
         return
 
