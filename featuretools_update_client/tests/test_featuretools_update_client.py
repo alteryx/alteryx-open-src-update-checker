@@ -25,18 +25,60 @@ class TestFeatureToolsUpdateClient(TestCase):
         data = get_response_json(version='0.7')
         version = data['version']
 
-        with warnings.catch_warnings(record=True) as w:
-            warnings.simplefilter("always")
-            featuretools_update_client.check_version(version=version)
-            self.assertEqual(len(w), 0)
+        with patch.dict('os.environ', {'FEATURETOOLS_UPDATE_CHECKER': 'TRUE'}):
+            with warnings.catch_warnings(record=True) as w:
+                warnings.simplefilter("always")
+                featuretools_update_client.check_version(version=version)
+                self.assertEqual(len(w), 0)
 
     @skipIf(SKIP_REAL, 'Skipping tests that hit the real API server.')
     def test_old_version_live(self):
-        with warnings.catch_warnings(record=True) as w:
-            warnings.simplefilter("always")
-            featuretools_update_client.check_version(version='0.7')
-            self.assertEqual(len(w), 1)
-            assert "Featuretools is out-of-date, latest ==" in str(w[-1].message)
+        with patch.dict('os.environ', {'FEATURETOOLS_UPDATE_CHECKER': 'TRUE'}):
+            with warnings.catch_warnings(record=True) as w:
+                warnings.simplefilter("always")
+                featuretools_update_client.check_version(version='0.7')
+                self.assertEqual(len(w), 1)
+                assert "Featuretools is out-of-date, latest ==" in str(w[-1].message)
+
+    @patch('featuretools_update_client.utils.requests.get')
+    def test_timeout(self, mock_get):
+        mock_get.side_effect = requests.exceptions.Timeout
+
+        with patch.dict('os.environ', {'FEATURETOOLS_UPDATE_CHECKER': 'TRUE'}):
+            with warnings.catch_warnings(record=True) as w:
+                warnings.simplefilter("always")
+                featuretools_update_client.check_version(version='0.7.1')
+                self.assertEqual(len(w), 0)
+
+    @patch('featuretools_update_client.utils.requests.get')
+    def test_connection_error(self, mock_get):
+        mock_get.side_effect = requests.exceptions.ConnectionError
+
+        with patch.dict('os.environ', {'FEATURETOOLS_UPDATE_CHECKER': 'TRUE'}):
+            with warnings.catch_warnings(record=True) as w:
+                warnings.simplefilter("always")
+                featuretools_update_client.check_version(version='0.7.1')
+                self.assertEqual(len(w), 0)
+
+    @patch('featuretools_update_client.utils.requests.get')
+    def test_too_many_redirects(self, mock_get):
+        mock_get.side_effect = requests.exceptions.TooManyRedirects
+
+        with patch.dict('os.environ', {'FEATURETOOLS_UPDATE_CHECKER': 'TRUE'}):
+            with warnings.catch_warnings(record=True) as w:
+                warnings.simplefilter("always")
+                featuretools_update_client.check_version(version='0.7.1')
+                self.assertEqual(len(w), 0)
+
+    @patch('featuretools_update_client.utils.requests.get')
+    def test_httperror(self, mock_get):
+        mock_get.side_effect = requests.exceptions.HTTPError
+
+        with patch.dict('os.environ', {'FEATURETOOLS_UPDATE_CHECKER': 'TRUE'}):
+            with warnings.catch_warnings(record=True) as w:
+                warnings.simplefilter("always")
+                featuretools_update_client.check_version(version='0.7.1')
+                self.assertEqual(len(w), 0)
 
     @patch('featuretools_update_client.utils.requests.get')
     def test_current_version_mock(self, mock_get):
@@ -47,10 +89,11 @@ class TestFeatureToolsUpdateClient(TestCase):
         mock_response.json.return_value = return_json
         mock_get.return_value = mock_response
 
-        with warnings.catch_warnings(record=True) as w:
-            warnings.simplefilter("always")
-            featuretools_update_client.check_version(version='0.7.1')
-            self.assertEqual(len(w), 0)
+        with patch.dict('os.environ', {'FEATURETOOLS_UPDATE_CHECKER': 'TRUE'}):
+            with warnings.catch_warnings(record=True) as w:
+                warnings.simplefilter("always")
+                featuretools_update_client.check_version(version='0.7.1')
+                self.assertEqual(len(w), 0)
 
     @patch('featuretools_update_client.utils.requests.get')
     def test_old_version_mock(self, mock_get):
@@ -61,11 +104,12 @@ class TestFeatureToolsUpdateClient(TestCase):
         mock_response.json.return_value = return_json
         mock_get.return_value = mock_response
 
-        with warnings.catch_warnings(record=True) as w:
-            warnings.simplefilter("always")
-            featuretools_update_client.check_version(version='0.7')
-            self.assertEqual(len(w), 1)
-            assert "Featuretools is out-of-date, latest ==" in str(w[-1].message)
+        with patch.dict('os.environ', {'FEATURETOOLS_UPDATE_CHECKER': 'TRUE'}):
+            with warnings.catch_warnings(record=True) as w:
+                warnings.simplefilter("always")
+                featuretools_update_client.check_version(version='0.7')
+                self.assertEqual(len(w), 1)
+                assert "Featuretools is out-of-date, latest ==" in str(w[-1].message)
 
     @patch('featuretools_update_client.utils.requests.get')
     def test_ok_but_empty_response(self, mock_get):
@@ -74,10 +118,11 @@ class TestFeatureToolsUpdateClient(TestCase):
         mock_response.json.return_value = return_json
         mock_get.return_value = mock_response
 
-        with warnings.catch_warnings(record=True) as w:
-            warnings.simplefilter("always")
-            featuretools_update_client.check_version()
-            self.assertEqual(len(w), 0)
+        with patch.dict('os.environ', {'FEATURETOOLS_UPDATE_CHECKER': 'TRUE'}):
+            with warnings.catch_warnings(record=True) as w:
+                warnings.simplefilter("always")
+                featuretools_update_client.check_version()
+                self.assertEqual(len(w), 0)
 
     @patch('featuretools_update_client.utils.requests.get')
     def test_bad_response(self, mock_get):
@@ -86,10 +131,11 @@ class TestFeatureToolsUpdateClient(TestCase):
         mock_response.raise_for_status.side_effect = http_error
         mock_get.return_value = mock_response
 
-        with warnings.catch_warnings(record=True) as w:
-            warnings.simplefilter("always")
-            featuretools_update_client.check_version()
-            self.assertEqual(len(w), 0)
+        with patch.dict('os.environ', {'FEATURETOOLS_UPDATE_CHECKER': 'TRUE'}):
+            with warnings.catch_warnings(record=True) as w:
+                warnings.simplefilter("always")
+                featuretools_update_client.check_version()
+                self.assertEqual(len(w), 0)
 
     @patch('featuretools_update_client.utils.requests.get')
     def test_non_json_response(self, mock_get):
@@ -97,7 +143,26 @@ class TestFeatureToolsUpdateClient(TestCase):
         mock_response.content = "Text response"
         mock_get.return_value = mock_response
 
-        with warnings.catch_warnings(record=True) as w:
-            warnings.simplefilter("always")
-            featuretools_update_client.check_version()
-            self.assertEqual(len(w), 0)
+        with patch.dict('os.environ', {'FEATURETOOLS_UPDATE_CHECKER': 'TRUE'}):
+            with warnings.catch_warnings(record=True) as w:
+                warnings.simplefilter("always")
+                featuretools_update_client.check_version()
+                self.assertEqual(len(w), 0)
+
+    @patch('featuretools_update_client.utils.requests.get')
+    def test_environment_variables(self, mock_get):
+        return_json = {"is_latest": False,
+                       "upload_time": "Wed, 24 Apr 2019 15:54:56 GMT",
+                       "version": "0.7.1"}
+        mock_response = Mock()
+        mock_response.json.return_value = return_json
+        mock_get.return_value = mock_response
+
+        # this test would fail unless the check is skipped by setting
+        # the FEATURETOOLS_UPDATE_CHECKER environment variable to false
+        for env_value in ['0', 'False', 'false', 'FALSE']:
+            with patch.dict('os.environ', {'FEATURETOOLS_UPDATE_CHECKER': env_value}):
+                with warnings.catch_warnings(record=True) as w:
+                    warnings.simplefilter("always")
+                    featuretools_update_client.check_version(version='0.7')
+                    self.assertEqual(len(w), 0)
