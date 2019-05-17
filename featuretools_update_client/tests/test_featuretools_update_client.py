@@ -7,6 +7,14 @@ import requests
 import featuretools_update_client
 from featuretools_update_client.utils import get_response_json
 
+try:
+    from unittest.mock import Mock, patch
+except ImportError:
+    import mock as Mock
+    from mock import patch
+
+
+
 # Tests that rely on a response from the real API server to pass
 # may fail if the server cannot be reached. Set SKIP_REAL to False
 # to run only the mocked tests and skip any tests tha rely on the
