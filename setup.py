@@ -26,5 +26,8 @@ setup(
         "featuretools_initialize": [
             "initialize = featuretools_update_client.functions:check_version"
         ],
+        "featuretools_initialize": [
+            "initialize = featuretools_update_client:functions"
+        ],
     }
 )
