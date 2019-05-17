@@ -11,7 +11,6 @@ try:
 except ImportError:
     from mock import Mock, patch
 
-
 # Tests that rely on a response from the real API server to pass
 # may fail if the server cannot be reached. Set SKIP_REAL to False
 # to run only the mocked tests and skip any tests tha rely on the
@@ -27,12 +26,14 @@ class TestFeatureToolsUpdateClient(TestCase):
         version = data['version']
 
         with warnings.catch_warnings(record=True) as w:
+            warnings.simplefilter("always")
             featuretools_update_client.check_version(version=version)
             self.assertEqual(len(w), 0)
 
     @skipIf(SKIP_REAL, 'Skipping tests that hit the real API server.')
     def test_old_version_live(self):
         with warnings.catch_warnings(record=True) as w:
+            warnings.simplefilter("always")
             featuretools_update_client.check_version(version='0.7')
             self.assertEqual(len(w), 1)
             assert "Featuretools is out-of-date, latest ==" in str(w[-1].message)
@@ -47,6 +48,7 @@ class TestFeatureToolsUpdateClient(TestCase):
         mock_get.return_value = mock_response
 
         with warnings.catch_warnings(record=True) as w:
+            warnings.simplefilter("always")
             featuretools_update_client.check_version(version='0.7.1')
             self.assertEqual(len(w), 0)
 
@@ -60,6 +62,7 @@ class TestFeatureToolsUpdateClient(TestCase):
         mock_get.return_value = mock_response
 
         with warnings.catch_warnings(record=True) as w:
+            warnings.simplefilter("always")
             featuretools_update_client.check_version(version='0.7')
             self.assertEqual(len(w), 1)
             assert "Featuretools is out-of-date, latest ==" in str(w[-1].message)
@@ -72,6 +75,7 @@ class TestFeatureToolsUpdateClient(TestCase):
         mock_get.return_value = mock_response
 
         with warnings.catch_warnings(record=True) as w:
+            warnings.simplefilter("always")
             featuretools_update_client.check_version()
             self.assertEqual(len(w), 0)
 
@@ -83,6 +87,7 @@ class TestFeatureToolsUpdateClient(TestCase):
         mock_get.return_value = mock_response
 
         with warnings.catch_warnings(record=True) as w:
+            warnings.simplefilter("always")
             featuretools_update_client.check_version()
             self.assertEqual(len(w), 0)
 
@@ -93,5 +98,6 @@ class TestFeatureToolsUpdateClient(TestCase):
         mock_get.return_value = mock_response
 
         with warnings.catch_warnings(record=True) as w:
+            warnings.simplefilter("always")
             featuretools_update_client.check_version()
             self.assertEqual(len(w), 0)
