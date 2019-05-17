@@ -1,2 +1,2 @@
-featuretools==0.7.1
-requests==2.21.0
+featuretools>=0.7.1
+requests>=2.22.0

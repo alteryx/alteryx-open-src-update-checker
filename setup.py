@@ -24,7 +24,7 @@ setup(
     long_description_content_type='text/markdown',
     entry_points={
         "featuretools_initialize": [
-            "initialize = featuretools_update_client:client"
+            "initialize = featuretools_update_client.functions:check_version"
         ],
     }
 )
