@@ -4,7 +4,7 @@ from unittest.mock import Mock, patch
 
 import requests
 
-from featuretools_update_client.functions import check_version
+import featuretools_update_client
 from featuretools_update_client.utils import get_response_json
 
 # Tests that rely on a response from the real API server to pass
@@ -22,13 +22,13 @@ class TestFeatureToolsUpdateClient(TestCase):
         version = data['version']
 
         with warnings.catch_warnings(record=True) as w:
-            check_version(version=version)
+            featuretools_update_client.check_version(version=version)
             self.assertEqual(len(w), 0)
 
     @skipIf(SKIP_REAL, 'Skipping tests that hit the real API server.')
     def test_old_version_live(self):
         with warnings.catch_warnings(record=True) as w:
-            check_version(version='0.7')
+            featuretools_update_client.check_version(version='0.7')
             self.assertEqual(len(w), 1)
             assert "Featuretools is out-of-date, latest ==" in str(w[-1].message)
 
@@ -42,7 +42,7 @@ class TestFeatureToolsUpdateClient(TestCase):
         mock_get.return_value = mock_response
 
         with warnings.catch_warnings(record=True) as w:
-            check_version(version='0.7.1')
+            featuretools_update_client.check_version(version='0.7.1')
             self.assertEqual(len(w), 0)
 
     @patch('featuretools_update_client.utils.requests.get')
@@ -55,7 +55,7 @@ class TestFeatureToolsUpdateClient(TestCase):
         mock_get.return_value = mock_response
 
         with warnings.catch_warnings(record=True) as w:
-            check_version(version='0.7')
+            featuretools_update_client.check_version(version='0.7')
             self.assertEqual(len(w), 1)
             assert "Featuretools is out-of-date, latest ==" in str(w[-1].message)
 
@@ -67,7 +67,7 @@ class TestFeatureToolsUpdateClient(TestCase):
         mock_get.return_value = mock_response
 
         with warnings.catch_warnings(record=True) as w:
-            check_version()
+            featuretools_update_client.check_version()
             self.assertEqual(len(w), 0)
 
     @patch('featuretools_update_client.utils.requests.get')
@@ -78,7 +78,7 @@ class TestFeatureToolsUpdateClient(TestCase):
         mock_get.return_value = mock_response
 
         with warnings.catch_warnings(record=True) as w:
-            check_version()
+            featuretools_update_client.check_version()
             self.assertEqual(len(w), 0)
 
     @patch('featuretools_update_client.utils.requests.get')
@@ -88,5 +88,5 @@ class TestFeatureToolsUpdateClient(TestCase):
         mock_get.return_value = mock_response
 
         with warnings.catch_warnings(record=True) as w:
-            check_version()
+            featuretools_update_client.check_version()
             self.assertEqual(len(w), 0)

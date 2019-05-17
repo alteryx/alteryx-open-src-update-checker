@@ -1,2 +1,2 @@
 # flake8: noqa
-from . import functions
+from .functions import check_version
