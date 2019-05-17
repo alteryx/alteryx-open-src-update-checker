@@ -4,6 +4,8 @@ import featuretools as ft
 
 from .utils import get_response_json
 
+warnings.simplefilter("always")
+
 
 def initialize(version=ft.__version__):
     check_version(version)

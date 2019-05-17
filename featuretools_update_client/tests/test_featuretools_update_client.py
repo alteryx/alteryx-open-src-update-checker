@@ -25,14 +25,13 @@ class TestFeatureToolsUpdateClient(TestCase):
         # get the current featuretools version from the api
         data = get_response_json(version='0.7')
         version = data['version']
-        warnings.resetwarnings()
+
         with warnings.catch_warnings(record=True) as w:
             featuretools_update_client.check_version(version=version)
             self.assertEqual(len(w), 0)
 
     @skipIf(SKIP_REAL, 'Skipping tests that hit the real API server.')
     def test_old_version_live(self):
-        warnings.resetwarnings()
         with warnings.catch_warnings(record=True) as w:
             featuretools_update_client.check_version(version='0.7')
             self.assertEqual(len(w), 1)
@@ -47,7 +46,6 @@ class TestFeatureToolsUpdateClient(TestCase):
         mock_response.json.return_value = return_json
         mock_get.return_value = mock_response
 
-        warnings.resetwarnings()
         with warnings.catch_warnings(record=True) as w:
             featuretools_update_client.check_version(version='0.7.1')
             self.assertEqual(len(w), 0)
@@ -61,7 +59,6 @@ class TestFeatureToolsUpdateClient(TestCase):
         mock_response.json.return_value = return_json
         mock_get.return_value = mock_response
 
-        warnings.resetwarnings()
         with warnings.catch_warnings(record=True) as w:
             featuretools_update_client.check_version(version='0.7')
             self.assertEqual(len(w), 1)
@@ -74,7 +71,6 @@ class TestFeatureToolsUpdateClient(TestCase):
         mock_response.json.return_value = return_json
         mock_get.return_value = mock_response
 
-        warnings.resetwarnings()
         with warnings.catch_warnings(record=True) as w:
             featuretools_update_client.check_version()
             self.assertEqual(len(w), 0)
@@ -86,7 +82,6 @@ class TestFeatureToolsUpdateClient(TestCase):
         mock_response.raise_for_status.side_effect = http_error
         mock_get.return_value = mock_response
 
-        warnings.resetwarnings()
         with warnings.catch_warnings(record=True) as w:
             featuretools_update_client.check_version()
             self.assertEqual(len(w), 0)
@@ -97,7 +92,6 @@ class TestFeatureToolsUpdateClient(TestCase):
         mock_response.content = "Text response"
         mock_get.return_value = mock_response
 
-        warnings.resetwarnings()
         with warnings.catch_warnings(record=True) as w:
             featuretools_update_client.check_version()
             self.assertEqual(len(w), 0)
