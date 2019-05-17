@@ -1,6 +1,5 @@
 import warnings
 from unittest import TestCase, skipIf
-from unittest.mock import Mock, patch
 
 import requests
 
@@ -10,9 +9,7 @@ from featuretools_update_client.utils import get_response_json
 try:
     from unittest.mock import Mock, patch
 except ImportError:
-    import mock as Mock
-    from mock import patch
-
+    from mock import Mock, patch
 
 
 # Tests that rely on a response from the real API server to pass
