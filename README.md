@@ -11,7 +11,7 @@ python -m pip install "featuretools[update_checker]"
 ## Disable Checker
 - You can disable the update checker by changing your environment variables to include the following:
 ```yaml
-FEATURETOOLS_UPDATE_CHECKER=False
+export FEATURETOOLS_UPDATE_CHECKER=False
 ```
 
 ## Uninstall
