@@ -1,5 +1,5 @@
 # Featuretools Update Checker
-[![CircleCI](https://circleci.com/gh/FeatureLabs/featuretools_update_checker.svg?style=svg&circle-token=8f6cfba4e8f07c5602f570cf894a216ab8fedaa2)](https://circleci.com/gh/FeatureLabs/featuretools_update_checker)
+[![CircleCI](https://circleci.com/gh/FeatureLabs/featuretools_update_checker.svg?style=svg)](https://circleci.com/gh/FeatureLabs/featuretools_update_checker)
 
 Featuretools update checker is a python library to automatically check that you have the latest version of Featuretools.
 ## Installation
