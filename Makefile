@@ -16,11 +16,11 @@ lint-fix:
 
 .PHONY: test
 test: lint
-	pytest featuretools_update_client/tests
+	pytest -s -vv -x featuretools_update_client/tests
 
 .PHONY: testcoverage
 testcoverage: lint
-	pytest featuretools_update_client/tests --cov=featuretools_update_client
+	pytest -s -vv -x featuretools_update_client/tests --cov=featuretools_update_client
 
 .PHONY: installdeps
 installdeps:
