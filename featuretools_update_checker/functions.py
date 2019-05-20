@@ -8,8 +8,8 @@ from .utils import get_response_json
 warnings.simplefilter("always")
 
 
-def initialize(version=ft.__version__):
-    check_version(version)
+def initialize():
+    check_version()
 
 
 def check_version(version=ft.__version__, headers={}):
