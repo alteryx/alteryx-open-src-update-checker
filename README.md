@@ -6,11 +6,11 @@ Featuretools Update Checker is a python library to automatically check that you 
 Install with pip
 
 	python -m pip install featuretools_update_checker
- 
+
 ## Example
 Below is an example of using the Update Checker
 ```python
-import featuretools as ft 
+import featuretools as ft
 > Featuretools is out-of-date, latest == 0.7.1
 ```
 - The update checker uses an entrypoint of featuretools so it will run everytime you import featuretools.
@@ -28,7 +28,7 @@ The tests for this library include tests that use a live API as well as tests th
 from the API. If changes are made to the live API or if a network connection is not available,
 the tests that use the live API can fail or produce inconsistent test results.
 
-The value of the `SKIP_REAL` variable in `test_featuretools_update_client.py`
+The value of the `SKIP_REAL` variable in `test_featuretools_update_checker.py`
 determines which tests are run. To run all tests, including the tests that use the real API, set
 `SKIP_REAL = False`. To run only the tests that use mock responses, set `SKIP_REAL = True`.
 
