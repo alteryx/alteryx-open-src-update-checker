@@ -17,18 +17,21 @@ except ImportError:
 # real API server.
 SKIP_REAL = False
 
+headers = {'Testing': 'True'}
+
 
 class TestFeatureToolsUpdateClient(TestCase):
     @skipIf(SKIP_REAL, 'Skipping tests that hit the real API server.')
     def test_current_version_live(self):
         # get the current featuretools version from the api
-        data = get_response_json(version='0.7')
+        data = get_response_json(version='0.7', headers=headers)
         version = data['version']
 
         with patch.dict('os.environ', {'FEATURETOOLS_UPDATE_CHECKER': 'TRUE'}):
             with warnings.catch_warnings(record=True) as w:
                 warnings.simplefilter("always")
-                featuretools_update_client.check_version(version=version)
+                featuretools_update_client.check_version(version=version,
+                                                         headers=headers)
                 self.assertEqual(len(w), 0)
 
     @skipIf(SKIP_REAL, 'Skipping tests that hit the real API server.')
@@ -36,7 +39,8 @@ class TestFeatureToolsUpdateClient(TestCase):
         with patch.dict('os.environ', {'FEATURETOOLS_UPDATE_CHECKER': 'TRUE'}):
             with warnings.catch_warnings(record=True) as w:
                 warnings.simplefilter("always")
-                featuretools_update_client.check_version(version='0.7')
+                featuretools_update_client.check_version(version='0.7',
+                                                         headers=headers)
                 self.assertEqual(len(w), 1)
                 assert "Featuretools is out-of-date, latest ==" in str(w[-1].message)
 
@@ -47,7 +51,8 @@ class TestFeatureToolsUpdateClient(TestCase):
         with patch.dict('os.environ', {'FEATURETOOLS_UPDATE_CHECKER': 'TRUE'}):
             with warnings.catch_warnings(record=True) as w:
                 warnings.simplefilter("always")
-                featuretools_update_client.check_version(version='0.7.1')
+                featuretools_update_client.check_version(version='0.7.1',
+                                                         headers=headers)
                 self.assertEqual(len(w), 0)
 
     @patch('featuretools_update_client.utils.requests.get')
@@ -57,7 +62,8 @@ class TestFeatureToolsUpdateClient(TestCase):
         with patch.dict('os.environ', {'FEATURETOOLS_UPDATE_CHECKER': 'TRUE'}):
             with warnings.catch_warnings(record=True) as w:
                 warnings.simplefilter("always")
-                featuretools_update_client.check_version(version='0.7.1')
+                featuretools_update_client.check_version(version='0.7.1',
+                                                         headers=headers)
                 self.assertEqual(len(w), 0)
 
     @patch('featuretools_update_client.utils.requests.get')
@@ -67,7 +73,8 @@ class TestFeatureToolsUpdateClient(TestCase):
         with patch.dict('os.environ', {'FEATURETOOLS_UPDATE_CHECKER': 'TRUE'}):
             with warnings.catch_warnings(record=True) as w:
                 warnings.simplefilter("always")
-                featuretools_update_client.check_version(version='0.7.1')
+                featuretools_update_client.check_version(version='0.7.1',
+                                                         headers=headers)
                 self.assertEqual(len(w), 0)
 
     @patch('featuretools_update_client.utils.requests.get')
@@ -77,7 +84,8 @@ class TestFeatureToolsUpdateClient(TestCase):
         with patch.dict('os.environ', {'FEATURETOOLS_UPDATE_CHECKER': 'TRUE'}):
             with warnings.catch_warnings(record=True) as w:
                 warnings.simplefilter("always")
-                featuretools_update_client.check_version(version='0.7.1')
+                featuretools_update_client.check_version(version='0.7.1',
+                                                         headers=headers)
                 self.assertEqual(len(w), 0)
 
     @patch('featuretools_update_client.utils.requests.get')
@@ -92,7 +100,8 @@ class TestFeatureToolsUpdateClient(TestCase):
         with patch.dict('os.environ', {'FEATURETOOLS_UPDATE_CHECKER': 'TRUE'}):
             with warnings.catch_warnings(record=True) as w:
                 warnings.simplefilter("always")
-                featuretools_update_client.check_version(version='0.7.1')
+                featuretools_update_client.check_version(version='0.7.1',
+                                                         headers=headers)
                 self.assertEqual(len(w), 0)
 
     @patch('featuretools_update_client.utils.requests.get')
@@ -107,7 +116,8 @@ class TestFeatureToolsUpdateClient(TestCase):
         with patch.dict('os.environ', {'FEATURETOOLS_UPDATE_CHECKER': 'TRUE'}):
             with warnings.catch_warnings(record=True) as w:
                 warnings.simplefilter("always")
-                featuretools_update_client.check_version(version='0.7')
+                featuretools_update_client.check_version(version='0.7',
+                                                         headers=headers)
                 self.assertEqual(len(w), 1)
                 assert "Featuretools is out-of-date, latest ==" in str(w[-1].message)
 
@@ -121,7 +131,7 @@ class TestFeatureToolsUpdateClient(TestCase):
         with patch.dict('os.environ', {'FEATURETOOLS_UPDATE_CHECKER': 'TRUE'}):
             with warnings.catch_warnings(record=True) as w:
                 warnings.simplefilter("always")
-                featuretools_update_client.check_version()
+                featuretools_update_client.check_version(headers=headers)
                 self.assertEqual(len(w), 0)
 
     @patch('featuretools_update_client.utils.requests.get')
@@ -134,7 +144,7 @@ class TestFeatureToolsUpdateClient(TestCase):
         with patch.dict('os.environ', {'FEATURETOOLS_UPDATE_CHECKER': 'TRUE'}):
             with warnings.catch_warnings(record=True) as w:
                 warnings.simplefilter("always")
-                featuretools_update_client.check_version()
+                featuretools_update_client.check_version(headers=headers)
                 self.assertEqual(len(w), 0)
 
     @patch('featuretools_update_client.utils.requests.get')
@@ -146,7 +156,7 @@ class TestFeatureToolsUpdateClient(TestCase):
         with patch.dict('os.environ', {'FEATURETOOLS_UPDATE_CHECKER': 'TRUE'}):
             with warnings.catch_warnings(record=True) as w:
                 warnings.simplefilter("always")
-                featuretools_update_client.check_version()
+                featuretools_update_client.check_version(headers=headers)
                 self.assertEqual(len(w), 0)
 
     @patch('featuretools_update_client.utils.requests.get')
@@ -164,5 +174,6 @@ class TestFeatureToolsUpdateClient(TestCase):
             with patch.dict('os.environ', {'FEATURETOOLS_UPDATE_CHECKER': env_value}):
                 with warnings.catch_warnings(record=True) as w:
                     warnings.simplefilter("always")
-                    featuretools_update_client.check_version(version='0.7')
+                    featuretools_update_client.check_version(version='0.7',
+                                                             headers=headers)
                     self.assertEqual(len(w), 0)
