@@ -33,7 +33,7 @@ setup(
     include_package_data=True,
     entry_points={
         "featuretools_initialize": [
-            "initialize = featuretools_update_checker.functions:check_version"
+            "initialize = featuretools_update_checker.functions:initialize"
         ],
     },
     long_description=long_description,

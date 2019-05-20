@@ -8,6 +8,10 @@ from .utils import get_response_json
 warnings.simplefilter("always")
 
 
+def initialize():
+    check_version()
+
+
 def check_version(version=ft.__version__, headers={}):
     ft_update_check = os.environ.get('FEATURETOOLS_UPDATE_CHECKER', True)
 
