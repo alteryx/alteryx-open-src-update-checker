@@ -1,9 +1,18 @@
+from os import path
+
 from setuptools import find_packages, setup
+
+dirname = path.abspath(path.dirname(__file__))
+with open(path.join(dirname, 'README.md')) as f:
+    long_description = f.read()
 
 setup(
     name='featuretools_update_checker',
     version='0.0.1',
     packages=find_packages(),
+    description='an update checker for featuretools',
+    url='http://featuretools.com',
+    license='BSD 3-clause',
     author='Feature Labs, Inc.',
     author_email='support@featurelabs.com',
     classifiers=[
@@ -20,8 +29,8 @@ setup(
     python_requires='>=2.7, <4',
     test_suite='featuretools_update_checker/tests',
     tests_require=open('test-requirements.txt').readlines(),
+    keywords='feature engineering data science machine learning',
     include_package_data=True,
-    long_description_content_type='text/markdown',
     entry_points={
         "featuretools_initialize": [
             "initialize = featuretools_update_checker.functions:check_version"
@@ -29,5 +38,7 @@ setup(
         "featuretools_initialize": [
             "initialize = featuretools_update_checker:functions"
         ],
-    }
+    },
+    long_description=long_description,
+    long_description_content_type='text/markdown'
 )

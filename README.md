@@ -15,7 +15,7 @@ export FEATURETOOLS_UPDATE_CHECKER=False
 ```
 
 ## Uninstall
-- To uninstall update checker, you can do the following:
+- To uninstall the update checker, you can do the following:
 ```shell
 python -m pip uninstall featuretools_update_checker
 ```
