@@ -5,10 +5,10 @@ Featuretools update checker is a python library to automatically check that you 
 ## Installation
 Install with pip
 
-	python -m pip install "featuretools[featuretools_update_checker]"
+	python -m pip install "featuretools[update_checker]"
 
 ## Disable Checker
-- You can easily disable the update checker by changing your environment variables to include the following:
+- You can disable the update checker by changing your environment variables to include the following:
 ```yaml
 FEATURETOOLS_UPDATE_CHECKER=False
 ```
@@ -25,5 +25,3 @@ python -m pip uninstall featuretools_update_checker
 </a>
 
 Featuretools update checker is an open source project created by [Feature Labs](https://www.featurelabs.com/). To see the other open source projects we're working on visit Feature Labs [Open Source](https://www.featurelabs.com/open). If building impactful data science pipelines is important to you or your business, please [get in touch](https://www.featurelabs.com/contact/).
-
-
