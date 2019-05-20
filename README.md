@@ -1,7 +1,7 @@
 # Featuretools Update Checker
 [![CircleCI](https://circleci.com/gh/FeatureLabs/featuretools_update_client/tree/master.svg?style=svg&circle-token=8f6cfba4e8f07c5602f570cf894a216ab8fedaa2)](https://circleci.com/gh/FeatureLabs/featuretools_update_client/tree/master)
 
-Featuretools Update Checker is a python library to automatically check that you have the latest version of Featuretools.
+Featuretools update checker is a python library to automatically check that you have the latest version of Featuretools.
 ## Installation
 Install with pip
 
@@ -24,6 +24,6 @@ python -m pip uninstall featuretools_update_checker
     <img src="http://www.featurelabs.com/wp-content/uploads/2017/12/logo.png" alt="Featuretools" />
 </a>
 
-Featuretools Update Checker is an open source project created by [Feature Labs](https://www.featurelabs.com/). To see the other open source projects we're working on visit Feature Labs [Open Source](https://www.featurelabs.com/open). If building impactful data science pipelines is important to you or your business, please [get in touch](https://www.featurelabs.com/contact/).
+Featuretools update checker is an open source project created by [Feature Labs](https://www.featurelabs.com/). To see the other open source projects we're working on visit Feature Labs [Open Source](https://www.featurelabs.com/open). If building impactful data science pipelines is important to you or your business, please [get in touch](https://www.featurelabs.com/contact/).
 
 
