@@ -5,7 +5,7 @@ Featuretools Update Checker is a python library to automatically check that you 
 ## Installation
 Install with pip
 
-	python -m pip install featuretools
+	python -m pip install featuretools_update_checker
  
 ## Example
 Below is an example of using the Update Checker
