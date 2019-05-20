@@ -27,7 +27,6 @@ jobs:
       - run: virtualenv test_env && virtualenv dev_env
       - install-packaged-update-checker
       - run: source dev_env/bin/activate && make installdeps
-      - run: source dev_env/bin/activate && make lint
       - run-packaged-tests
 
   "python-35":
@@ -36,9 +35,10 @@ jobs:
       - image: circleci/python:3.5
     steps:
       - checkout
-      - run: virtualenv venv_py35
-      - run: source venv_py35/bin/activate && make installdeps
-      - run: source venv_py35/bin/activate && make test
+      - run: virtualenv test_env && virtualenv dev_env
+      - install-packaged-update-checker
+      - run: source dev_env/bin/activate && make installdeps
+      - run-packaged-tests
 
   "python-36":
     working_directory: ~/featuretools_update_checker
@@ -46,10 +46,11 @@ jobs:
       - image: circleci/python:3.6
     steps:
       - checkout
-      - run: virtualenv venv_py36
-      - run: source venv_py36/bin/activate && make installdeps
-      - run: source venv_py36/bin/activate && make lint
-      - run: source venv_py36/bin/activate && make test
+      - run: virtualenv test_env && virtualenv dev_env
+      - install-packaged-update-checker
+      - run: source dev_env/bin/activate && make installdeps
+      - run: source dev_env/bin/activate && make lint
+      - run-packaged-tests
 
   "python-37":
     working_directory: ~/featuretools_update_checker
@@ -57,9 +58,10 @@ jobs:
       - image: circleci/python:3.7
     steps:
       - checkout
-      - run: virtualenv venv_py37
-      - run: source venv_py37/bin/activate && make installdeps
-      - run: source venv_py37/bin/activate && make test
+      - run: virtualenv test_env && virtualenv dev_env
+      - install-packaged-update-checker
+      - run: source dev_env/bin/activate && make installdeps
+      - run-packaged-tests
 
 workflows:
   version: 2
