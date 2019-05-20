@@ -4,20 +4,21 @@
 Featuretools update checker is a python library to automatically check that you have the latest version of Featuretools.
 ## Installation
 Install with pip
-
-	python -m pip install "featuretools[update_checker]"
+```shell
+python -m pip install "featuretools[update_checker]"
+```
 
 ## Disable Checker
 - You can disable the update checker by changing your environment variables to include the following:
-  ```yaml
-  FEATURETOOLS_UPDATE_CHECKER=False
-  ```
+```yaml
+FEATURETOOLS_UPDATE_CHECKER=False
+```
 
 ## Uninstall
 - To uninstall featuretools_update_checker, you can do the following:
-  ```shell
-  python -m pip uninstall featuretools_update_checker
-  ```
+```shell
+python -m pip uninstall featuretools_update_checker
+```
 
 ## Feature Labs
 <a href="https://www.featurelabs.com/">
