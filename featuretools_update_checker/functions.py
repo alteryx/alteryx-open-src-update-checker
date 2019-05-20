@@ -1,5 +1,6 @@
 import os
 import warnings
+from threading import Thread
 
 import featuretools as ft
 
@@ -9,7 +10,8 @@ warnings.simplefilter("always")
 
 
 def initialize():
-    check_version()
+    bg_thread = Thread(target=check_version)
+    bg_thread.start()
 
 
 def check_version(version=ft.__version__, headers={}):
