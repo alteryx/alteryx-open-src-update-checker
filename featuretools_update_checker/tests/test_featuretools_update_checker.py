@@ -42,7 +42,7 @@ class TestFeatureToolsUpdateClient(TestCase):
                 featuretools_update_checker.check_version(version='0.7',
                                                           headers=headers)
                 self.assertEqual(len(w), 1)
-                assert "Featuretools is out-of-date, latest ==" in str(w[-1].message)
+                assert "Featuretools is out-of-date: installed == 0.7, latest == " in str(w[-1].message)
 
     @patch('featuretools_update_checker.utils.requests.get')
     def test_timeout(self, mock_get):
@@ -119,7 +119,7 @@ class TestFeatureToolsUpdateClient(TestCase):
                 featuretools_update_checker.check_version(version='0.7',
                                                           headers=headers)
                 self.assertEqual(len(w), 1)
-                assert "Featuretools is out-of-date, latest ==" in str(w[-1].message)
+                assert "Featuretools is out-of-date: installed == 0.7, latest == 0.7.1" == str(w[-1].message)
 
     @patch('featuretools_update_checker.utils.requests.get')
     def test_ok_but_empty_response(self, mock_get):
