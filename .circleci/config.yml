@@ -21,7 +21,7 @@ jobs:
   "python-27":
     working_directory: ~/featuretools_update_checker
     docker:
-      - image: circleci/python:2.7
+      - image: circleci/python:2.7-stretch
     steps:
       - checkout
       - run: virtualenv test_env && virtualenv dev_env
@@ -32,7 +32,7 @@ jobs:
   "python-35":
     working_directory: ~/featuretools_update_checker
     docker:
-      - image: circleci/python:3.5
+      - image: circleci/python:3.5-stretch
     steps:
       - checkout
       - run: virtualenv test_env && virtualenv dev_env
@@ -43,7 +43,7 @@ jobs:
   "python-36":
     working_directory: ~/featuretools_update_checker
     docker:
-      - image: circleci/python:3.6
+      - image: circleci/python:3.6-stretch
     steps:
       - checkout
       - run: virtualenv test_env && virtualenv dev_env
@@ -55,7 +55,7 @@ jobs:
   "python-37":
     working_directory: ~/featuretools_update_checker
     docker:
-      - image: circleci/python:3.7
+      - image: circleci/python:3.7-stretch
     steps:
       - checkout
       - run: virtualenv test_env && virtualenv dev_env
