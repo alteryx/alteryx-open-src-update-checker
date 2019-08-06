@@ -4,7 +4,7 @@ workflow "Release" {
 }
 
 action "PyPI" {
-  uses = "FeatureLabsgh-action-pypi-upload@master"
+  uses = "FeatureLabs/gh-action-pypi-upload@master"
   secrets = ["PYPI_USERNAME", "PYPI_PASSWORD"]
   env = {
     TWINE_REPOSITORY_URL = "https://test.pypi.org/legacy/"
