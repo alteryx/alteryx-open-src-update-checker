@@ -8,7 +8,7 @@ with open(path.join(dirname, 'README.md')) as f:
 
 setup(
     name='featuretools_update_checker',
-    version='1.0.1',
+    version='1.0.2',
     packages=find_packages(),
     description='an update checker for featuretools',
     url='http://featuretools.com',
