@@ -3,10 +3,10 @@ workflow "Release" {
   resolves = ["PyPI"]
 }
 
-action "PyPI" {
-  uses = "./release"
+action “PyPI” {
+  uses = "FeatureLabsgh-action-pypi-upload@master"
   secrets = ["PYPI_USERNAME", "PYPI_PASSWORD"]
   env = {
-    TWINE_REPOSITORY_URL = "https://upload.pypi.org/legacy/"
+    TWINE_REPOSITORY_URL = "https://test.pypi.org/legacy/"
     }
 }
