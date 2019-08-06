@@ -3,7 +3,7 @@ workflow "Release" {
   resolves = ["PyPI"]
 }
 
-action “PyPI” {
+action "PyPI" {
   uses = "FeatureLabsgh-action-pypi-upload@master"
   secrets = ["PYPI_USERNAME", "PYPI_PASSWORD"]
   env = {
