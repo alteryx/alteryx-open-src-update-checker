@@ -33,4 +33,4 @@ package_featuretools_update_checker:
 	python setup.py sdist
 	$(eval FEATURETOOLS_UPDATE_CHECKER_VERSION=$(shell python setup.py --version))
 	tar -zxvf "dist/featuretools_update_checker-${FEATURETOOLS_UPDATE_CHECKER_VERSION}.tar.gz"
-	mv "featuretools-${FEATURETOOLS_UPDATE_CHECKER_VERSION}" unpacked_sdist
+	mv "featuretools_update_checker-${FEATURETOOLS_UPDATE_CHECKER_VERSION}" unpacked_sdist
