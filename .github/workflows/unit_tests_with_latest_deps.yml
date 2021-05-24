@@ -5,7 +5,7 @@ on:
     branches:
       - master
 
-name: Unit Tests - Latest Dependencies
+name: Unit Tests
 jobs:
   unit_tests:
     name: ${{ matrix.python_version }} unit tests
