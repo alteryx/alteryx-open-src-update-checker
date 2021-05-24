@@ -25,7 +25,6 @@ setup(
          'Programming Language :: Python :: 3.7'
     ],
     install_requires=open('requirements.txt').readlines(),
-    setup_requires=open('setup-requirements.txt').readlines(),
     python_requires='>=2.7, <4',
     test_suite='featuretools_update_checker/tests',
     tests_require=open('test-requirements.txt').readlines(),
