@@ -1,5 +1,5 @@
 # Featuretools Update Checker
-[![CircleCI](https://circleci.com/gh/FeatureLabs/featuretools_update_checker.svg?style=svg)](https://circleci.com/gh/FeatureLabs/featuretools_update_checker)
+[![CircleCI](https://circleci.com/gh/FeatureLabs/alteryx_open_src_update_checker.svg?style=svg)](https://circleci.com/gh/FeatureLabs/alteryx_open_src_update_checker)
 
 Featuretools update checker is a python library to automatically check that you have the latest version of Featuretools.
 ## Installation
@@ -7,17 +7,21 @@ Install with pip
 ```shell
 python -m pip install "featuretools[update_checker]"
 ```
+or, install it directly with pip
+```shell
+python -m pip install "alteryx_open_src_update_checker"
+```
 
 ## Disable Checker
 - You can disable the update checker by changing your environment variables to include the following:
 ```yaml
-export FEATURETOOLS_UPDATE_CHECKER=False
+export ALTERYX_OPEN_SRC_UPDATE_CHECKER=False
 ```
 
 ## Uninstall
 - To uninstall the update checker, you can do the following:
 ```shell
-python -m pip uninstall featuretools_update_checker
+python -m pip uninstall alteryx_open_src_update_checker
 ```
 
 ## Feature Labs

@@ -24,9 +24,9 @@ jobs:
         with:
           ref: ${{ github.event.pull_request.head.ref }}
           repository: ${{ github.event.pull_request.head.repo.full_name }}
-      - name: Build featuretools package
-        run: make package_featuretools_update_checker
-      - name: Install featuretools_update_checker with dev, and test requirements
+      - name: Build alteryx_open_src_update_checker package
+        run: make package_alteryx_open_src_update_checker
+      - name: Install alteryx_open_src_update_checker with dev, and test requirements
         run: |
           pip config --site set global.progress_bar off
           python -m pip install --upgrade pip

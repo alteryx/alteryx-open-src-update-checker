@@ -7,7 +7,7 @@ with open(path.join(dirname, 'README.md')) as f:
     long_description = f.read()
 
 setup(
-    name='featuretools_update_checker',
+    name='alteryx_open_src_update_checker',
     version='1.0.2',
     packages=find_packages(),
     description='an update checker for featuretools',
@@ -26,13 +26,13 @@ setup(
     ],
     install_requires=open('requirements.txt').readlines(),
     python_requires='>=2.7, <4',
-    test_suite='featuretools_update_checker/tests',
+    test_suite='alteryx_open_src_update_checker/tests',
     tests_require=open('test-requirements.txt').readlines(),
     keywords='feature engineering data science machine learning',
     include_package_data=True,
     entry_points={
         "featuretools_initialize": [
-            "initialize = featuretools_update_checker.functions:initialize"
+            "initialize = alteryx_open_src_update_checker.functions:initialize"
         ],
     },
     long_description=long_description,

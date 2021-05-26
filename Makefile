@@ -7,20 +7,20 @@ clean:
 
 .PHONY: lint
 lint:
-	flake8 featuretools_update_checker && isort --check-only --recursive featuretools_update_checker
+	flake8 alteryx_open_src_update_checker && isort --check-only --recursive alteryx_open_src_update_checker
 
 .PHONY: lint-fix
 lint-fix:
-	autopep8 --in-place --recursive --max-line-length=100 --select="E225,E303,E302,E203,E128,E231,E251,E271,E127,E126,E301,W291,W293,E226,E306,E221" featuretools_update_checker
-	isort --recursive featuretools_update_checker
+	autopep8 --in-place --recursive --max-line-length=100 --select="E225,E303,E302,E203,E128,E231,E251,E271,E127,E126,E301,W291,W293,E226,E306,E221" alteryx_open_src_update_checker
+	isort --recursive alteryx_open_src_update_checker
 
 .PHONY: test
 test: lint
-	pytest -s -vv -x featuretools_update_checker/tests
+	pytest -s -vv -x alteryx_open_src_update_checker/tests
 
 .PHONY: testcoverage
 testcoverage: lint
-	pytest -s -vv -x featuretools_update_checker/tests --cov=featuretools_update_checker
+	pytest -s -vv -x alteryx_open_src_update_checker/tests --cov=alteryx_open_src_update_checker
 
 .PHONY: installdeps
 installdeps:
@@ -28,9 +28,9 @@ installdeps:
 	pip install -e .
 	pip install -r dev-requirements.txt
 
-.PHONY: package_featuretools_update_checker
-package_featuretools_update_checker:
+.PHONY: package_alteryx_open_src_update_checker
+package_alteryx_open_src_update_checker:
 	python setup.py sdist
-	$(eval FEATURETOOLS_UPDATE_CHECKER_VERSION=$(shell python setup.py --version))
-	tar -zxvf "dist/featuretools_update_checker-${FEATURETOOLS_UPDATE_CHECKER_VERSION}.tar.gz"
-	mv "featuretools_update_checker-${FEATURETOOLS_UPDATE_CHECKER_VERSION}" unpacked_sdist
+	$(eval ALTERYX_OPEN_SRC_UPDATE_CHECKER_VERSION=$(shell python setup.py --version))
+	tar -zxvf "dist/alteryx_open_src_update_checker-${ALTERYX_OPEN_SRC_UPDATE_CHECKER_VERSION}.tar.gz"
+	mv "alteryx_open_src_update_checker-${ALTERYX_OPEN_SRC_UPDATE_CHECKER_VERSION}" unpacked_sdist
