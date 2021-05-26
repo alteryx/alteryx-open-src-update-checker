@@ -8,8 +8,8 @@ from .utils import get_response_json
 warnings.simplefilter("always")
 
 
-def initialize():
-    bg_thread = Thread(target=check_version)
+def initialize(library='featuretools'):
+    bg_thread = Thread(target=check_version, kwargs={'library': library})
     bg_thread.start()
 
 
