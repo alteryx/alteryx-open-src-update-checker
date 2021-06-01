@@ -34,6 +34,9 @@ setup(
         "featuretools_initialize": [
             "initialize = alteryx_open_src_update_checker.functions:initialize"
         ],
+        "alteryx_open_src_initialize": [
+            "initialize = alteryx_open_src_update_checker.functions:initialize"
+        ],
     },
     long_description=long_description,
     long_description_content_type='text/markdown'
