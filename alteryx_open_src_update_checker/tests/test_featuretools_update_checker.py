@@ -27,7 +27,7 @@ class TestFeatureToolsUpdateClient(TestCase):
         data = get_response_json(version='0.7', headers=headers)
         version = data['version']
 
-        with patch.dict('os.environ', {'alteryx_open_src_update_checker': 'TRUE'}):
+        with patch.dict('os.environ', {'ALTERYX_OPEN_SRC_UPDATE_CHECKER': 'TRUE'}):
             with warnings.catch_warnings(record=True) as w:
                 warnings.simplefilter("always")
                 alteryx_open_src_update_checker.check_version(version=version,
@@ -36,7 +36,7 @@ class TestFeatureToolsUpdateClient(TestCase):
 
     @skipIf(SKIP_REAL, 'Skipping tests that hit the real API server.')
     def test_old_version_live(self):
-        with patch.dict('os.environ', {'alteryx_open_src_update_checker': 'TRUE'}):
+        with patch.dict('os.environ', {'ALTERYX_OPEN_SRC_UPDATE_CHECKER': 'TRUE'}):
             with warnings.catch_warnings(record=True) as w:
                 warnings.simplefilter("always")
                 alteryx_open_src_update_checker.check_version(version='0.7',
@@ -48,7 +48,7 @@ class TestFeatureToolsUpdateClient(TestCase):
     def test_timeout(self, mock_get):
         mock_get.side_effect = requests.exceptions.Timeout
 
-        with patch.dict('os.environ', {'alteryx_open_src_update_checker': 'TRUE'}):
+        with patch.dict('os.environ', {'ALTERYX_OPEN_SRC_UPDATE_CHECKER': 'TRUE'}):
             with warnings.catch_warnings(record=True) as w:
                 warnings.simplefilter("always")
                 alteryx_open_src_update_checker.check_version(version='0.7.1',
@@ -59,7 +59,7 @@ class TestFeatureToolsUpdateClient(TestCase):
     def test_connection_error(self, mock_get):
         mock_get.side_effect = requests.exceptions.ConnectionError
 
-        with patch.dict('os.environ', {'alteryx_open_src_update_checker': 'TRUE'}):
+        with patch.dict('os.environ', {'ALTERYX_OPEN_SRC_UPDATE_CHECKER': 'TRUE'}):
             with warnings.catch_warnings(record=True) as w:
                 warnings.simplefilter("always")
                 alteryx_open_src_update_checker.check_version(version='0.7.1',
@@ -70,7 +70,7 @@ class TestFeatureToolsUpdateClient(TestCase):
     def test_too_many_redirects(self, mock_get):
         mock_get.side_effect = requests.exceptions.TooManyRedirects
 
-        with patch.dict('os.environ', {'alteryx_open_src_update_checker': 'TRUE'}):
+        with patch.dict('os.environ', {'ALTERYX_OPEN_SRC_UPDATE_CHECKER': 'TRUE'}):
             with warnings.catch_warnings(record=True) as w:
                 warnings.simplefilter("always")
                 alteryx_open_src_update_checker.check_version(version='0.7.1',
@@ -81,7 +81,7 @@ class TestFeatureToolsUpdateClient(TestCase):
     def test_httperror(self, mock_get):
         mock_get.side_effect = requests.exceptions.HTTPError
 
-        with patch.dict('os.environ', {'alteryx_open_src_update_checker': 'TRUE'}):
+        with patch.dict('os.environ', {'ALTERYX_OPEN_SRC_UPDATE_CHECKER': 'TRUE'}):
             with warnings.catch_warnings(record=True) as w:
                 warnings.simplefilter("always")
                 alteryx_open_src_update_checker.check_version(version='0.7.1',
@@ -97,7 +97,7 @@ class TestFeatureToolsUpdateClient(TestCase):
         mock_response.json.return_value = return_json
         mock_get.return_value = mock_response
 
-        with patch.dict('os.environ', {'alteryx_open_src_update_checker': 'TRUE'}):
+        with patch.dict('os.environ', {'ALTERYX_OPEN_SRC_UPDATE_CHECKER': 'TRUE'}):
             with warnings.catch_warnings(record=True) as w:
                 warnings.simplefilter("always")
                 alteryx_open_src_update_checker.check_version(version='0.7.1',
@@ -113,7 +113,7 @@ class TestFeatureToolsUpdateClient(TestCase):
         mock_response.json.return_value = return_json
         mock_get.return_value = mock_response
 
-        with patch.dict('os.environ', {'alteryx_open_src_update_checker': 'TRUE'}):
+        with patch.dict('os.environ', {'ALTERYX_OPEN_SRC_UPDATE_CHECKER': 'TRUE'}):
             with warnings.catch_warnings(record=True) as w:
                 warnings.simplefilter("always")
                 alteryx_open_src_update_checker.check_version(version='0.7',
@@ -128,7 +128,7 @@ class TestFeatureToolsUpdateClient(TestCase):
         mock_response.json.return_value = return_json
         mock_get.return_value = mock_response
 
-        with patch.dict('os.environ', {'alteryx_open_src_update_checker': 'TRUE'}):
+        with patch.dict('os.environ', {'ALTERYX_OPEN_SRC_UPDATE_CHECKER': 'TRUE'}):
             with warnings.catch_warnings(record=True) as w:
                 warnings.simplefilter("always")
                 alteryx_open_src_update_checker.check_version(headers=headers)
@@ -141,7 +141,7 @@ class TestFeatureToolsUpdateClient(TestCase):
         mock_response.raise_for_status.side_effect = http_error
         mock_get.return_value = mock_response
 
-        with patch.dict('os.environ', {'alteryx_open_src_update_checker': 'TRUE'}):
+        with patch.dict('os.environ', {'ALTERYX_OPEN_SRC_UPDATE_CHECKER': 'TRUE'}):
             with warnings.catch_warnings(record=True) as w:
                 warnings.simplefilter("always")
                 alteryx_open_src_update_checker.check_version(headers=headers)
@@ -153,7 +153,7 @@ class TestFeatureToolsUpdateClient(TestCase):
         mock_response.content = "Text response"
         mock_get.return_value = mock_response
 
-        with patch.dict('os.environ', {'alteryx_open_src_update_checker': 'TRUE'}):
+        with patch.dict('os.environ', {'ALTERYX_OPEN_SRC_UPDATE_CHECKER': 'TRUE'}):
             with warnings.catch_warnings(record=True) as w:
                 warnings.simplefilter("always")
                 alteryx_open_src_update_checker.check_version(headers=headers)

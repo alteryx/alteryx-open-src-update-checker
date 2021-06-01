@@ -9,7 +9,7 @@ def get_response_json(library='featuretools', version=None, headers={}):
     if version is None:
         version = lib.__version__
     try:
-        response = requests.get(BASE_URL + '?library=' + library + '&version=' + version,
+        response = requests.get(BASE_URL + '?library={}&version={}'.format(library, version),
                                 headers=headers).json()
     except Exception:
         return None

@@ -10,7 +10,7 @@ setup(
     name='alteryx_open_src_update_checker',
     version='1.0.2',
     packages=find_packages(),
-    description='an update checker for featuretools',
+    description='an update checker for alteryx open source libraries',
     url='http://featuretools.com',
     license='BSD 3-clause',
     author='Feature Labs, Inc.',
