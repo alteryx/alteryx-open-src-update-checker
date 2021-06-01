@@ -1,10 +1,10 @@
 # Alteryx Open Source Update Checker
 <p align="center">
-    <a href="https://github.com/FeatureLabs/featuretools_update_checker/actions/workflows/unit_tests_with_latest_deps.yml" target="_blank">
-        <img src="https://github.com/FeatureLabs/featuretools_update_checker/actions/workflows/unit_tests_with_latest_deps.yml/badge.svg?branch=master" alt="Tests" />
+    <a href="https://github.com/FeatureLabs/alteryx-open-src-update-checker/actions/workflows/unit_tests_with_latest_deps.yml" target="_blank">
+        <img src="https://github.com/FeatureLabs/alteryx-open-src-update-checker/actions/workflows/unit_tests_with_latest_deps.yml/badge.svg?branch=master" alt="Tests" />
     </a>
-    <a href="https://pepy.tech/project/featuretools_update_checker" target="_blank">
-        <img src="https://pepy.tech/badge/featuretools_update_checker/month" alt="PyPI Downloads" />
+    <a href="https://pepy.tech/project/alteryx_open_src_update_checker" target="_blank">
+        <img src="https://pepy.tech/badge/alteryx_open_src_update_checker/month" alt="PyPI Downloads" />
     </a>
 </p>
 <hr>
