@@ -2,4 +2,7 @@ pytest==4.6.11
 pytest-xdist==1.26.1
 pytest-cov==2.6.1
 featuretools==0.7.1
+composeml==0.6.0
+evalml==0.14.1
+woodwork==0.0.11
 mock>=3.0.5
