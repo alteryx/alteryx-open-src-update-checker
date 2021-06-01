@@ -8,7 +8,7 @@ with open(path.join(dirname, 'README.md')) as f:
 
 setup(
     name='alteryx_open_src_update_checker',
-    version='1.0.2',
+    version='2.0.0',
     packages=find_packages(),
     description='an update checker for alteryx open source libraries',
     url='http://featuretools.com',
