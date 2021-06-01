@@ -1,11 +1,16 @@
-import requests
 from importlib import import_module
+
+import requests
 
 from .settings import BASE_URL
 
 
 def get_response_json(library='featuretools', version=None, headers={}):
-    lib = import_module(library)
+    try:
+        lib = import_module(library)
+    except Exception:
+        return
+
     if version is None:
         version = lib.__version__
     try:

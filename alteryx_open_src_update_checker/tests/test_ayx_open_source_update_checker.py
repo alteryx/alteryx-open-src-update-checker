@@ -1,7 +1,7 @@
 import warnings
 
-import requests
 import pytest
+import requests
 
 import alteryx_open_src_update_checker
 from alteryx_open_src_update_checker.utils import get_response_json
@@ -23,16 +23,18 @@ headers = {'Testing': 'True'}
 
 libraries = ['featuretools', 'evalml', 'woodwork', 'composeml']
 
+
 @pytest.fixture(params=libraries)
 def library(request):
     return request.param
+
 
 @skip_real
 def test_default():
     data = get_response_json(headers=headers)
     assert data['library'] == 'featuretools'
     version = data['version']
-    
+
     with patch.dict('os.environ', {'ALTERYX_OPEN_SRC_UPDATE_CHECKER': 'TRUE'}):
         with warnings.catch_warnings(record=True) as w:
             warnings.simplefilter("always")
@@ -53,6 +55,7 @@ def test_current_version_live(library):
                                                           version=version,
                                                           headers=headers)
             assert len(w) == 0
+
 
 @skip_real
 def test_old_version_live(library):
@@ -122,8 +125,8 @@ def test_httperror(mock_get, library):
 @patch('alteryx_open_src_update_checker.utils.requests.get')
 def test_current_version_mock(mock_get, library):
     return_json = {"is_latest": True,
-                    "upload_time": "Wed, 24 Apr 2019 15:54:56 GMT",
-                    "version": "0.0.1"}
+                   "upload_time": "Wed, 24 Apr 2019 15:54:56 GMT",
+                   "version": "0.0.1"}
     mock_response = Mock()
     mock_response.json.return_value = return_json
     mock_get.return_value = mock_response
@@ -182,6 +185,7 @@ def test_bad_response(mock_get, library):
             warnings.simplefilter("always")
             alteryx_open_src_update_checker.check_version(library=library, headers=headers)
             assert len(w) == 0
+
 
 @patch('alteryx_open_src_update_checker.utils.requests.get')
 def test_non_json_response(mock_get, library):

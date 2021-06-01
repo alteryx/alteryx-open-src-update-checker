@@ -1,7 +1,7 @@
 import os
 import warnings
-from threading import Thread
 from importlib import import_module
+from threading import Thread
 
 from .utils import get_response_json
 
@@ -17,7 +17,10 @@ def check_version(library='featuretools', version=None, headers={}):
     update_check = os.environ.get('ALTERYX_OPEN_SRC_UPDATE_CHECKER', True)
     with warnings.catch_warnings():
         warnings.simplefilter('ignore')
-        lib = import_module(library)
+        try:
+            lib = import_module(library)
+        except Exception:
+            return
     if version is None:
         version = lib.__version__
 
