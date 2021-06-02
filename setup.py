@@ -8,13 +8,12 @@ with open(path.join(dirname, 'README.md')) as f:
 
 setup(
     name='alteryx_open_src_update_checker',
-    version='1.0.2',
-    packages=find_packages(),
-    description='an update checker for alteryx open source libraries',
-    url='http://featuretools.com',
-    license='BSD 3-clause',
-    author='Feature Labs, Inc.',
+    author='Alteryx, Inc.',
     author_email='support@featurelabs.com',
+    license='BSD 3-clause',
+    version='1.0.2',
+    description='an update checker for alteryx open source libraries',
+    url='https://github.com/FeatureLabs/alteryx-open-src-update-checker/',
     classifiers=[
          'Development Status :: 3 - Alpha',
          'Intended Audience :: Developers',
@@ -23,11 +22,12 @@ setup(
          'Programming Language :: Python :: 3.8',
          'Programming Language :: Python :: 3.9'
     ],
+    packages=find_packages(),
     install_requires=open('requirements.txt').readlines(),
-    python_requires='>=2.7, <4',
+    python_requires='>=3.7, <4',
     test_suite='alteryx_open_src_update_checker/tests',
     tests_require=open('test-requirements.txt').readlines(),
-    keywords='feature engineering data science machine learning',
+    keywords='update check data science machine learning alteryx',
     include_package_data=True,
     entry_points={
         "featuretools_initialize": [
