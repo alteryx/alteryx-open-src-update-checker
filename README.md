@@ -9,16 +9,20 @@
 </p>
 <hr>
 
-Alteryx open source update checker is a python library to automatically check that you have the latest version of an Alteryx open source library. If you Alteryx open source library is out of date, a warning will be shown and you will be prompted to upgrade. 
+Alteryx open source update checker is a Python library to automatically check that you have the latest version of an Alteryx open source library. If you have an Alteryx open source library that out of date, a warning to upgrade will be shown. 
 
 ## Installation
-Install with pip
+
+- Install with pip (as an add-on to Alteryx open source libraries):
 ```shell
 python -m pip install "featuretools[update_checker]"
+python -m pip install "evalml[update_checker]"
+python -m pip install "woodwork[update_checker]"
+python -m pip install "compose[update_checker]"
 ```
-or, install it directly with pip
+- or, install it directly with pip
 ```shell
-python -m pip install "alteryx_open_src_update_checker"
+python -m pip install alteryx_open_src_update_checker
 ```
 
 ## Disable Checker
