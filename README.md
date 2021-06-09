@@ -9,7 +9,8 @@
 </p>
 <hr>
 
-Alteryx open source update checker is a python library to automatically check that you have the latest version of an Alteryx open source library.
+Alteryx open source update checker is a python library to automatically check that you have the latest version of an Alteryx open source library. If you Alteryx open source library is out of date, a warning will be shown and you will be prompted to upgrade. 
+
 ## Installation
 Install with pip
 ```shell
