@@ -20,10 +20,6 @@ python -m pip install "evalml[update_checker]"
 python -m pip install "woodwork[update_checker]"
 python -m pip install "compose[update_checker]"
 ```
-- or, install it directly with pip
-```shell
-python -m pip install alteryx_open_src_update_checker
-```
 
 ## Disable Checker
 - You can disable the update checker by changing your environment variables to include the following:
