@@ -5,8 +5,6 @@ from threading import Thread
 
 from .utils import get_response_json
 
-warnings.simplefilter("always")
-
 
 def initialize(library='featuretools'):
     bg_thread = Thread(target=check_version, kwargs={'library': library})
