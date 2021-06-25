@@ -36,4 +36,6 @@ def check_version(library='featuretools', version=None, headers={}):
 
     if not is_latest:
         msg = "%s is out-of-date: installed == %s, latest == %s" % (library, version, latest_version)
+    with warnings.catch_warnings():
+        warnings.simplefilter('always')
         warnings.warn(msg)
