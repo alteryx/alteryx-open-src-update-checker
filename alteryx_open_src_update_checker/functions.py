@@ -13,7 +13,10 @@ def initialize(library='featuretools'):
 
 def check_version(library='featuretools', version=None, headers={}):
     update_check = os.environ.get('ALTERYX_OPEN_SRC_UPDATE_CHECKER', True)
-    warnings.simplefilter('ignore')
+
+    # Use append=False when setting simplefilter so we know filter gets added
+    # to the start of the filters list and we can remove later with pop
+    warnings.simplefilter('ignore', append=False)
     try:
         lib = import_module(library)
     except Exception:
@@ -36,6 +39,8 @@ def check_version(library='featuretools', version=None, headers={}):
 
     if not is_latest:
         msg = "%s is out-of-date: installed == %s, latest == %s" % (library, version, latest_version)
-        warnings.simplefilter('always')
+        # Use append=False when setting simplefilter so we know filter gets added
+        # to the start of the filters list and we can remove later with pop
+        warnings.simplefilter('always', append=False)
         warnings.warn(msg)
         warnings.filters.pop(0)
