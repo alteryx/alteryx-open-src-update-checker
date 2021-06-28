@@ -11,7 +11,7 @@ setup(
     author='Alteryx, Inc.',
     author_email='support@featurelabs.com',
     license='BSD 3-clause',
-    version='2.0.0',
+    version='2.1.0',
     description='an update checker for alteryx open source libraries',
     url='https://github.com/FeatureLabs/alteryx-open-src-update-checker/',
     classifiers=[
