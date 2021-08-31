@@ -12,6 +12,7 @@ def initialize(library='featuretools'):
 
 
 def check_version(library='featuretools', version=None, headers={}):
+
     update_check = os.environ.get('ALTERYX_OPEN_SRC_UPDATE_CHECKER', True)
     try:
         lib = import_module(library)
