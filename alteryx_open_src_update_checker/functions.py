@@ -21,7 +21,7 @@ def check_version(library='featuretools', version=None, headers={}):
 
     if version is None:
         version = lib.__version__
-
+    print(version)
     if update_check in ['0', 'False', 'false', 'FALSE']:
         return
 
