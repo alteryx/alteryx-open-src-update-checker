@@ -39,4 +39,4 @@ jobs:
       - name: Run unit tests
         run: |
           cd unpacked_sdist
-          pytest alteryx_open_src_update_checker/tests
+          pytest alteryx_open_src_update_checker/tests -s
