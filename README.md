@@ -14,23 +14,23 @@ Alteryx open source update checker is a Python library to automatically check th
 ## Installation
 
 - Install with pip (as an add-on to Alteryx open source libraries):
-```shell
+```bash
 python -m pip install "featuretools[update_checker]"
 python -m pip install "evalml[update_checker]"
 python -m pip install "woodwork[update_checker]"
 python -m pip install "compose[update_checker]"
 ```
 
+- Install with conda from the [conda-forge channel](https://anaconda.org/conda-forge/woodwork):
+
+```bash
+conda install -c conda-forge alteryx-open-src-update-checker
+```
+
 ## Disable Checker
 - You can disable the update checker by changing your environment variables to include the following:
 ```yaml
 export ALTERYX_OPEN_SRC_UPDATE_CHECKER=False
-```
-
-## Uninstall
-- To uninstall the update checker, you can do the following:
-```shell
-python -m pip uninstall alteryx_open_src_update_checker
 ```
 
 ## Built at Alteryx Innovation Labs
