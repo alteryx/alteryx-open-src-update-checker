@@ -19,11 +19,11 @@ lint-fix:
 
 .PHONY: test
 test: lint
-	pytest -s -vv -x alteryx_open_src_update_checker/tests
+	pytest -s -vv -x -n auto alteryx_open_src_update_checker/tests
 
 .PHONY: testcoverage
 testcoverage: lint
-	pytest -s -vv -x alteryx_open_src_update_checker/tests --cov=alteryx_open_src_update_checker
+	pytest -s -vv -x -n auto alteryx_open_src_update_checker/tests --cov=alteryx_open_src_update_checker
 
 .PHONY: installdeps
 installdeps:

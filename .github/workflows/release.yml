@@ -1,16 +1,15 @@
+name: Release
 on:
   release:
     types: [published]
-
-name: Release
 jobs:
   pypi:
-    name: Release to PyPI
+    name: PyPI Release
     runs-on: ubuntu-latest
     steps:
-    - uses: actions/checkout@v2
-    - name: Upload to PyPI
-      uses: FeatureLabs/gh-action-pypi-upload@v1
+    - uses: actions/checkout@v3
+    - name: PyPI Upload
+      uses: FeatureLabs/gh-action-pypi-upload@v2
       env:
         PYPI_USERNAME: ${{ secrets.PYPI_USERNAME }}
         PYPI_PASSWORD: ${{ secrets.PYPI_PASSWORD }}
