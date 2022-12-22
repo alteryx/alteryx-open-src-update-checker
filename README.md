@@ -15,10 +15,10 @@ Alteryx open source update checker is a Python library to automatically check th
 
 - Install with pip (as an add-on to Alteryx open source libraries):
 ```bash
-python -m pip install "featuretools[update_checker]"
-python -m pip install "evalml[update_checker]"
-python -m pip install "woodwork[update_checker]"
-python -m pip install "compose[update_checker]"
+python -m pip install "featuretools[updater]"
+python -m pip install "evalml[updater]"
+python -m pip install "woodwork[updater]"
+python -m pip install "compose[updater]"
 ```
 
 - Install with conda from the [conda-forge channel](https://anaconda.org/conda-forge/woodwork):
@@ -38,4 +38,3 @@ export ALTERYX_OPEN_SRC_UPDATE_CHECKER=False
 <a href="https://www.alteryx.com/innovation-labs">
     <img src="https://evalml-web-images.s3.amazonaws.com/alteryx_innovation_labs.png" alt="Alteryx Innovation Labs" />
 </a>
-
