@@ -4,7 +4,7 @@ on:
     types: [opened, synchronize]
   push:
     branches:
-      - master
+      - main
 jobs:
   unit_tests:
     name: ${{ matrix.python_version }} unit tests
