@@ -4,33 +4,47 @@ clean:
 	find . -name '*.pyc' -delete
 	find . -name __pycache__ -delete
 	find . -name '*~' -delete
+	find . -name '.coverage.*' -delete
 
 .PHONY: lint
 lint:
-	flake8 alteryx_open_src_update_checker && isort --check-only --recursive alteryx_open_src_update_checker
+	isort --check-only alteryx_open_src_update_checker
+	black alteryx_open_src_update_checker -t py311 --check
+	flake8 alteryx_open_src_update_checker
 
 .PHONY: lint-fix
 lint-fix:
-	autopep8 --in-place --recursive --max-line-length=100 --select="E225,E303,E302,E203,E128,E231,E251,E271,E127,E126,E301,W291,W293,E226,E306,E221" alteryx_open_src_update_checker
-	isort --recursive alteryx_open_src_update_checker
+	black alteryx_open_src_update_checker -t py310
+	isort alteryx_open_src_update_checker
 
 .PHONY: test
 test: lint
-	pytest -s -vv -x alteryx_open_src_update_checker/tests
+	pytest -s -vv -x -n auto alteryx_open_src_update_checker/tests
 
 .PHONY: testcoverage
 testcoverage: lint
-	pytest -s -vv -x alteryx_open_src_update_checker/tests --cov=alteryx_open_src_update_checker
+	pytest -s -vv -x -n auto alteryx_open_src_update_checker/tests --cov=alteryx_open_src_update_checker
 
 .PHONY: installdeps
 installdeps:
-	pip install --upgrade pip
-	pip install -e .
-	pip install -r dev-requirements.txt
+	pip install -e ".[dev]"
+	pre-commit install
 
-.PHONY: package_alteryx_open_src_update_checker
-package_alteryx_open_src_update_checker:
-	python setup.py sdist
-	$(eval ALTERYX_OPEN_SRC_UPDATE_CHECKER_VERSION=$(shell python setup.py --version))
-	tar -zxvf "dist/alteryx_open_src_update_checker-${ALTERYX_OPEN_SRC_UPDATE_CHECKER_VERSION}.tar.gz"
-	mv "alteryx_open_src_update_checker-${ALTERYX_OPEN_SRC_UPDATE_CHECKER_VERSION}" unpacked_sdist
+.PHONY: upgradepip
+upgradepip:
+	python -m pip install --upgrade pip
+
+.PHONY: upgradebuild
+upgradebuild:
+	python -m pip install --upgrade build
+
+.PHONY: upgradesetuptools
+upgradesetuptools:
+	python -m pip install --upgrade setuptools
+
+.PHONY: package
+package: upgradepip upgradebuild upgradesetuptools
+	python -m build
+	$(eval PACKAGE=$(shell python -c "from pep517.meta import load; metadata = load('.'); print(metadata.version)"))
+	tar -zxvf "dist/alteryx_open_src_update_checker-${PACKAGE}.tar.gz"
+	mv "alteryx_open_src_update_checker-${PACKAGE}" unpacked_sdist

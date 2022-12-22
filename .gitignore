@@ -3,6 +3,7 @@
 __pycache__/
 *.py[cod]
 *$py.class
+unpacked_sdist/
 
 # C extensions
 *.so

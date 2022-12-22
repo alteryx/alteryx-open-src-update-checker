@@ -1,3 +1,3 @@
 # flake8: noqa
-from .functions import check_version
-from .version import __version__
+from alteryx_open_src_update_checker.functions import check_version
+from alteryx_open_src_update_checker.version import __version__

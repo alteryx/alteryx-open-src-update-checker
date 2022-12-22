@@ -1,0 +1,118 @@
+[project]
+name = "alteryx_open_src_update_checker"
+readme = "README.md"
+description = "an update checker for alteryx open source libraries"
+dynamic = ["version"]
+classifiers = [
+    "Development Status :: 5 - Production/Stable",
+    "Intended Audience :: Science/Research",
+    "Intended Audience :: Developers",
+    "Topic :: Software Development",
+    "Topic :: Scientific/Engineering",
+    "Programming Language :: Python",
+    "Programming Language :: Python :: 3",
+    "Programming Language :: Python :: 3.8",
+    "Programming Language :: Python :: 3.9",
+    "Programming Language :: Python :: 3.10",
+    "Operating System :: Microsoft :: Windows",
+    "Operating System :: POSIX",
+    "Operating System :: Unix",
+    "Operating System :: MacOS",
+]
+authors = [
+    {name="Alteryx, Inc.", email="open_source_support@alteryx.com"}
+]
+maintainers = [
+    {name="Alteryx, Inc.", email="open_source_support@alteryx.com"}
+]
+keywords = ["data science", "machine learning"]
+license = {text = "BSD 3-clause"}
+requires-python = ">=3.8,<4"
+dependencies = [
+    "requests>=2.22.0",
+]
+
+[project.urls]
+"Source Code"= "https://github.com/alteryx/alteryx-open-src-update-checker/"
+"Issue Tracker" = "https://github.com/alteryx/alteryx-open-src-update-checker/issues"
+"Twitter" = "https://twitter.com/alteryxoss"
+"Chat" = "https://join.slack.com/t/alteryx-oss/shared_invite/zt-182tyvuxv-NzIn6eiCEf8TBziuKp0bNA"
+
+[project.optional-dependencies]
+dev = [
+    "flake8 == 5.0.4",
+    "isort == 5.10.1",
+    "black == 22.6.0",
+    "pre-commit == 2.20.0",
+]
+test = [
+    "pip >= 21.3.1",
+    "pytest >= 7.1.2",
+    "pytest-cov >= 3.0.0",
+    "pytest-xdist >= 2.5.0",
+    "featuretools",
+    "composeml",
+    "evalml",
+    "woodwork",
+    "mock>=3.0.5",
+]
+
+[tool.setuptools]
+include-package-data = true
+license-files = [
+    "LICENSE",
+]
+
+[tool.setuptools.packages.find]
+namespaces = true
+
+[tool.setuptools.package-data]
+"*" = [
+    "*.txt",
+    "README.md",
+]
+
+[tool.setuptools.exclude-package-data]
+"*" = [
+    "* __pycache__",
+    "*.py[co]",
+]
+
+[tool.setuptools.dynamic]
+version = {attr = "alteryx_open_src_update_checker.version.__version__"}
+
+[tool.pytest.ini_options]
+testpaths = [
+    "alteryx_open_src_update_checker/tests/*"
+]
+filterwarnings = [
+    "ignore::DeprecationWarning",
+    "ignore::PendingDeprecationWarning"
+]
+
+[tool.isort]
+profile = "black"
+forced_separate = "alteryx_open_src_update_checker"
+known_first_party = "alteryx_open_src_update_checker"
+skip = "__init__.py"
+filter_files = true
+multi_line_output = 3
+
+[tool.black]
+target-version = ['py311']
+
+[tool.coverage.run]
+source = ["alteryx_open_src_update_checker"]
+
+[tool.coverage.report]
+exclude_lines =[
+    "pragma: no cover",
+    "def __repr__",
+    "raise AssertionError",
+    "raise NotImplementedError",
+    "if __name__ == .__main__.:",
+    "if self._verbose:",
+    "if verbose:",
+    "if profile:",
+    "pytest.skip"
+]
