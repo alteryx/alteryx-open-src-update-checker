@@ -10,7 +10,7 @@ clean:
 lint:
 	isort --check-only alteryx_open_src_update_checker
 	black alteryx_open_src_update_checker -t py311 --check
-	flake8 alteryx_open_src_update_checker
+	ruff alteryx_open_src_update_checker/
 
 .PHONY: lint-fix
 lint-fix:
