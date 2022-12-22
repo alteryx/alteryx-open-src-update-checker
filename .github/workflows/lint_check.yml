@@ -19,9 +19,7 @@ jobs:
         with:
           ref: ${{ github.event.pull_request.head.ref }}
           repository: ${{ github.event.pull_request.head.repo.full_name }}
-      - name: Build alteryx_open_src_update_checker package
-        run: make package
-      - name: Install alteryx_open_src_update_checker with dev requirements
+      - name: Install  dev requirements
         run: |
           python -m pip install -e .[dev]
       - name: Run lint test
