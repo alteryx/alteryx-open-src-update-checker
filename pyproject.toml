@@ -40,7 +40,7 @@ dependencies = [
 
 [project.optional-dependencies]
 dev = [
-    "flake8 == 5.0.4",
+    "ruff",
     "isort == 5.10.1",
     "black == 22.6.0",
     "pre-commit == 2.20.0",
