@@ -14,7 +14,7 @@ lint:
 
 .PHONY: lint-fix
 lint-fix:
-	black alteryx_open_src_update_checker -t py310
+	black alteryx_open_src_update_checker -t py311
 	isort alteryx_open_src_update_checker
 
 .PHONY: test
