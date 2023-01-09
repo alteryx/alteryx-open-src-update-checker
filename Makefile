@@ -9,7 +9,7 @@ clean:
 .PHONY: lint
 lint:
 	black . --preview --check
-	ruff ./
+	ruff .
 
 .PHONY: lint-fix
 lint-fix:
