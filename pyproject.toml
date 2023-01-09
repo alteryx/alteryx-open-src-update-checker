@@ -90,6 +90,21 @@ filterwarnings = [
     "ignore::PendingDeprecationWarning"
 ]
 
+[tool.ruff]
+select = [
+    # Pyflakes
+    "F",
+    # Pycodestyle
+    "E",
+    "W",
+    # isort
+    "I001"
+]
+src = ["alteryx_open_src_update_checker"]
+
+[tool.ruff.isort]
+known-first-party = ["alteryx_open_src_update_checker"]
+
 [tool.coverage.run]
 source = ["alteryx_open_src_update_checker"]
 
