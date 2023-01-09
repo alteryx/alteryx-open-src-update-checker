@@ -90,17 +90,6 @@ filterwarnings = [
     "ignore::PendingDeprecationWarning"
 ]
 
-[tool.isort]
-profile = "black"
-forced_separate = "alteryx_open_src_update_checker"
-known_first_party = "alteryx_open_src_update_checker"
-skip = "__init__.py"
-filter_files = true
-multi_line_output = 3
-
-[tool.black]
-target-version = ['py311']
-
 [tool.coverage.run]
 source = ["alteryx_open_src_update_checker"]
 
