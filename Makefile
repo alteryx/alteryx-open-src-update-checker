@@ -8,14 +8,13 @@ clean:
 
 .PHONY: lint
 lint:
-	isort --check-only alteryx_open_src_update_checker
-	black alteryx_open_src_update_checker -t py311 --check
-	ruff alteryx_open_src_update_checker/
+	black . --preview --check
+	ruff .
 
 .PHONY: lint-fix
 lint-fix:
-	black alteryx_open_src_update_checker -t py311
-	isort alteryx_open_src_update_checker
+	black . --preview
+	ruff . --fix
 
 .PHONY: test
 test: lint
